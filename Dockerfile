@@ -20,15 +20,16 @@ RUN apt-get install -y trac-announcer
 RUN apt-get install -y trac-graphviz
 RUN apt-get install -y python-flup
 
-ADD setup_trac_config.sh /.setup_trac_config.sh
-ADD setup_trac.sh /.setup_trac.sh
+RUN mkdir /repos
+#ADD setup_trac_config.sh /.setup_trac_config.sh
+#ADD setup_trac.sh /.setup_trac.sh
 ADD run.sh /run.sh
 ADD trac_logo.png /var/www/trac_logo.png
 
-ADD set_trac_user_password.py /usr/local/bin/
-RUN chmod 755 /usr/local/bin/set_trac_user_password.py
+#ADD set_trac_user_password.py /usr/local/bin/
+#RUN chmod 755 /usr/local/bin/set_trac_user_password.py
 
-VOLUME [ "/trac"]
+VOLUME [ "/trac", "/repos"]
 
 EXPOSE 8080
 
